@@ -38,6 +38,23 @@ class Validations {
     req.body.password = password;
     return next();
   }
+
+  static addJokeValidation(req, res, next) {
+    const { title, joke, status } = req.body;
+    if (!title || !title.trim()) {
+      return res.status(400).json({ message: 'title is required' });
+    }
+    if (!joke || !joke.trim()) {
+      return res.status(400).json({ message: 'joke is required' });
+    }
+    if (!status || !status.trim()) {
+      return res.status(400).json({ message: 'status is required' });
+    }
+    req.body.title = title.trim();
+    req.body.joke = joke.trim();
+    req.body.status = status.trim();
+    return next();
+  }
 }
 
 module.exports = Validations;

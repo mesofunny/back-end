@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const Models = require('../models/jokesModel');
 
 class Jokes {
@@ -29,6 +30,23 @@ class Jokes {
       const jokes = await Models.search(text);
       return res.status(200).json({ jokes });
     } catch (error) {
+      return res.status(500).json({ error });
+    }
+  }
+
+  static async addJoke(req, res) {
+    const { title, joke, status } = req.body;
+    const user_id = req.id;
+    try {
+      const result = await Models.post({
+        title,
+        joke,
+        private: status,
+        user_id
+      });
+      return res.status(201).json({ joke: result });
+    } catch (error) {
+      console.log(error);
       return res.status(500).json({ error });
     }
   }

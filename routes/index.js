@@ -2,6 +2,7 @@ const express = require('express');
 const UserControllers = require('../controllers/Users');
 const JokeControllers = require('../controllers/Jokes');
 const Validations = require('../middlewares/Validations');
+const Auth = require('../middlewares/Auth');
 
 const router = express.Router();
 
@@ -18,5 +19,11 @@ router.post(
 router.get('/jokes', JokeControllers.getAllJokes);
 router.get('/jokesOfTheDay', JokeControllers.jokeOfTheDay);
 router.get('/search', JokeControllers.searchJoke);
+router.post(
+  '/jokes',
+  Auth.verifyToken,
+  Validations.addJokeValidation,
+  JokeControllers.addJoke
+);
 
 module.exports = router;

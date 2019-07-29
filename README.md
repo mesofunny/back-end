@@ -2,7 +2,7 @@
 
 Dad Jokes API is used for fetching jokes and you can add jokes too.
 
-Link to the API https://mesofunny.herokuapp.com/
+Link to the API https://mesofunny.herokuapp.com
 
 #### Request
 
