@@ -9,9 +9,9 @@ module.exports = {
     useNullAsDefault: true,
     migrations: {
       directory: './models/migrations',
-      tableName: 'dbmigrations'
+      tableName: 'dbmigrations',
     },
-    seeds: { directory: './models/seeds' }
+    seeds: { directory: './models/seeds' },
   },
   development: {
     client: 'pg',
@@ -19,30 +19,28 @@ module.exports = {
       host: 'localhost',
       port: 5432,
       database: 'jokesdb',
-      user: 'benjaminajewole'
+      user: 'benjaminajewole',
     },
     useNullAsDefault: true,
     migrations: {
       directory: './models/migrations',
-      tableName: 'dbmigrations'
+      tableName: 'dbmigrations',
     },
-    seeds: { directory: './models/seeds' }
+    seeds: { directory: './models/seeds' },
   },
   testing: {
-    client: 'sqlite3',
+    client: 'pg',
     connection: {
-      filename: './models/test_jokes.db3'
+      host: 'localhost',
+      port: 5432,
+      database: 'jokesdb',
+      user: 'benjaminajewole',
     },
     useNullAsDefault: true,
-    pool: {
-      afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done);
-      }
-    },
     migrations: {
       directory: './models/migrations',
-      tableName: 'dbmigrations'
+      tableName: 'dbmigrations',
     },
-    seeds: { directory: './models/seeds' }
-  }
+    seeds: { directory: './models/seeds' },
+  },
 };
