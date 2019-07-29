@@ -25,5 +25,6 @@ router.post(
   Validations.addJokeValidation,
   JokeControllers.addJoke
 );
+router.get('/users/jokes', Auth.verifyToken, JokeControllers.getUserJoke);
 
 module.exports = router;

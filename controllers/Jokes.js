@@ -46,7 +46,19 @@ class Jokes {
       });
       return res.status(201).json({ jokes: result });
     } catch (error) {
-      console.log(error);
+      return res.status(500).json({ error });
+    }
+  }
+
+  static async getUserJoke(req, res) {
+    const user_id = req.id;
+    try {
+      const jokes = await Models.getUserJoke(user_id);
+      if (!jokes.length) {
+        return res.status(404).json('No jokes associated with this user');
+      }
+      return res.status(200).json({ jokes });
+    } catch (error) {
       return res.status(500).json({ error });
     }
   }

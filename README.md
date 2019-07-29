@@ -170,6 +170,7 @@ status: 200
 #### Request
 
 **POST** request to **/api/v1/jokes**
+
 A valid jwt token must be passed in the **Authorization** header
 
 ```
@@ -226,3 +227,37 @@ Returns all jokes that have been created by a user
 401 - Invalid token
 401 - No token provided
 ```
+
+#### Request
+
+**GET** request to **/api/v1/users/jokes**
+
+A valid jwt token must be passed in the **Authorization** header
+
+#### Response
+
+```
+status: 200
+```
+
+```
+Returns an array of jokes created by the user
+{
+    "jokes": [
+        {
+            "id": 17,
+            "title": "Laughing",
+            "joke": "I am a laughter that laugh all the time"
+        },
+        {
+            "id": 18,
+            "title": "Laughing",
+            "joke": "I am a laughter that laugh all the time"
+        },
+    ]
+}
+```
+
+Note:
+
+- It is a protected route, so you're to provide a valid token
