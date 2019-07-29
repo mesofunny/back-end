@@ -11,7 +11,7 @@ class Validations {
     if (!email || !email.trim() || regexEmail.test(email.trim())) {
       return res.status(400).json({ message: 'Enter a valid email address' });
     }
-    if (!password || password.length > 7) {
+    if (!password || password.length < 7) {
       return res
         .status(400)
         .json({ message: 'Password length should be greater than 6' });
@@ -29,7 +29,7 @@ class Validations {
     if (!email || !email.trim() || regexEmail.test(email.trim())) {
       return res.status(400).json({ message: 'Enter a valid email address' });
     }
-    if (!password || password.length > 7) {
+    if (!password || password.length < 7) {
       return res
         .status(400)
         .json({ message: 'Password length should be greater than 6' });
