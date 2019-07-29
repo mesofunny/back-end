@@ -26,5 +26,10 @@ router.post(
   JokeControllers.addJoke
 );
 router.get('/users/jokes', Auth.verifyToken, JokeControllers.getUserJoke);
+router.delete(
+  '/users/jokes/:id',
+  Auth.verifyToken,
+  JokeControllers.deleteUserJoke
+);
 
 module.exports = router;

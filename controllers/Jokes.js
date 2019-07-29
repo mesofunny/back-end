@@ -55,9 +55,30 @@ class Jokes {
     try {
       const jokes = await Models.getUserJoke(user_id);
       if (!jokes.length) {
-        return res.status(404).json('No jokes associated with this user');
+        return res.status(404).json('No jokes is associated with this user');
       }
       return res.status(200).json({ jokes });
+    } catch (error) {
+      return res.status(500).json({ error });
+    }
+  }
+
+  static async deleteUserJoke(req, res) {
+    const user_id = req.id;
+    const id = Number(req.params.id);
+    try {
+      const joke = await Models.remove(user_id, id);
+      if (joke === 'unable to delete') {
+        return res
+          .status(403)
+          .json({ message: 'User can only delete jokes they created' });
+      }
+      if (!joke) {
+        return res
+          .status(400)
+          .json({ message: 'No joke associated with this ID' });
+      }
+      return res.status(204).json({ message: 'Deleted successfully' });
     } catch (error) {
       return res.status(500).json({ error });
     }

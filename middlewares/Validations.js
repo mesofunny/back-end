@@ -56,7 +56,6 @@ class Validations {
       status.toLowerCase().trim() !== 'yes'
       && status.toLowerCase().trim() !== 'no'
     ) {
-      console.log(status);
       return res.status(400).json({ message: 'status can only be yes or no' });
     }
     req.body.title = title.trim();

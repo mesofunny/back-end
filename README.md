@@ -121,22 +121,7 @@ status: 200
             "id": 3,
             "title": "Guts",
             "joke": "Why didn’t the skeleton cross the road? Because he had no guts."
-        },
-        {
-            "id": 4,
-            "title": "Cashew",
-            "joke": "What did one nut say as he chased another nut?  I'm a cashew!"
-        },
-        {
-            "id": 5,
-            "title": "Mall",
-            "joke": "Chances are if you' ve seen one shopping center, you've seen a mall."
-        },
-        {
-            "id": 6,
-            "title": "Mixer",
-            "joke": "I knew I shouldn't steal a mixer from work, but it was a whisk I was willing to take."
-        },
+        }
     ]
 }
 ```
@@ -206,16 +191,6 @@ Returns all jokes that have been created by a user
             "title": "Laughing",
             "joke": "I am a laughter that laugh all the time"
         },
-        {
-            "id": 19,
-            "title": "Sleep",
-            "joke": "Slept like a log last night … woke up in the fireplace."
-        },
-        {
-            "id": 20,
-            "title": "Sleep",
-            "joke": "Slept like a log last night … woke up in the fireplace."
-        }
     ]
 }
 ```
@@ -261,3 +236,38 @@ Returns an array of jokes created by the user
 Note:
 
 - It is a protected route, so you're to provide a valid token
+
+#### Error
+
+```
+401 - Invalid token
+401 - No token provided
+404 - No jokes is associated with this user
+```
+
+#### Request
+
+**DELETE** request to **/api/v1/users/jokes/:id**
+A valid jwt token must be passed in the **Authorization** header
+
+#### Response
+
+```
+status: 204
+```
+
+```
+{
+    "message": "Deleted successfully"
+}
+```
+
+#### Error
+
+```
+400 - User can only delete jokes they created
+400 - No joke associated with this ID
+401 - Invalid token
+401 - No token provided
+404 - No jokes is associated with this user
+```

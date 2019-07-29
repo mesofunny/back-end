@@ -10,7 +10,6 @@ class Auth {
       if (token) {
         const decoded = await jwt.verify(token, process.env.JWT_SECRET);
         req.id = decoded.id;
-        console.log(req.id);
         return next();
       }
       return res.status(401).json({
