@@ -3,7 +3,9 @@ const db = require('./dbConfig');
 class UsersModel {
   static async post(data) {
     try {
-      const [id] = await db('users').insert(data);
+      const [id] = await db('users')
+        .insert(data)
+        .returning('id');
       const user = await this.findById(id);
       return user;
     } catch (error) {

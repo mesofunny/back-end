@@ -14,14 +14,14 @@ module.exports = {
     seeds: { directory: './models/seeds' }
   },
   development: {
-    client: 'sqlite3',
-    connection: { filename: './models/jokes.db3' },
-    useNullAsDefault: true,
-    pool: {
-      afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done);
-      }
+    client: 'pg',
+    connection: {
+      host: 'localhost',
+      port: 5432,
+      database: 'jokesdb',
+      user: 'benjaminajewole'
     },
+    useNullAsDefault: true,
     migrations: {
       directory: './models/migrations',
       tableName: 'dbmigrations'
