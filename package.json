@@ -1,0 +1,38 @@
+{
+  "name": "me_so_funny",
+  "version": "1.0.0",
+  "description": "Creating API for MeSoFunny with Node, Express, Cloudinary, SQLite 3, Knex",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mesofunny/back-end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mesofunny/back-end/issues"
+  },
+  "homepage": "https://github.com/mesofunny/back-end#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.19.1",
+    "nodemon": "^1.19.1",
+    "pg": "^7.12.0",
+    "sqlite3": "^4.0.9"
+  },
+  "devDependencies": {
+    "crossenv": "0.0.2-security",
+    "dotenv": "^8.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
