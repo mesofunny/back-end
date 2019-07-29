@@ -1,7 +1,9 @@
 class Validations {
   static registerValidation(req, res, next) {
     const regexEmail = /S+@S+.S+/;
-    const { firstname, lastname, email, password } = req.body;
+    const {
+ firstname, lastname, email, password 
+} = req.body;
     if (!firstname || !firstname.trim()) {
       return res.status(400).json({ message: 'firstname is required' });
     }
@@ -51,8 +53,8 @@ class Validations {
       return res.status(400).json({ message: 'status is required' });
     }
     if (
-      status.toLowerCase().trim() !== 'yes' &&
-      status.toLowerCase().trim() !== 'no'
+      status.toLowerCase().trim() !== 'yes'
+      && status.toLowerCase().trim() !== 'no'
     ) {
       console.log(status);
       return res.status(400).json({ message: 'status can only be yes or no' });
