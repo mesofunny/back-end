@@ -22,6 +22,16 @@ class Jokes {
       return res.status(500).json({ error });
     }
   }
+
+  static async searchJoke(req, res) {
+    const { text } = req.query;
+    try {
+      const jokes = await Models.search(text);
+      return res.status(200).json({ jokes });
+    } catch (error) {
+      return res.status(500).json({ error });
+    }
+  }
 }
 
 module.exports = Jokes;

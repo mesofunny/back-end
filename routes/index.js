@@ -17,5 +17,6 @@ router.post(
 );
 router.get('/jokes', JokeControllers.getAllJokes);
 router.get('/jokesOfTheDay', JokeControllers.jokeOfTheDay);
+router.get('/search', JokeControllers.searchJoke);
 
 module.exports = router;
