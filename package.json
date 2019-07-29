@@ -1,0 +1,33 @@
+{
+  "name": "me_so_funny",
+  "version": "1.0.0",
+  "description": "Creating API for MeSoFunny with Node, Express, Cloudinary, SQLite 3, Knex",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node index.js",
+    "start:dev": "nodemon --exec babel-node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mesofunny/back-end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mesofunny/back-end/issues"
+  },
+  "homepage": "https://github.com/mesofunny/back-end#readme",
+  "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.5.5",
+    "express": "^4.17.1",
+    "knex": "^0.19.1",
+    "nodemon": "^1.19.1",
+    "pg": "^7.12.0",
+    "sqlite3": "^4.0.9"
+  }
+}
