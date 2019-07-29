@@ -12,12 +12,12 @@ class Auth {
         req.id = decoded.id;
         return next();
       }
-      return res.status(403).json({
+      return res.status(401).json({
         message: 'No token provided, must be set on the Authorization Header'
       });
     } catch (error) {
       return res
-        .status(500)
+        .status(401)
         .json({ message: 'Unable to verify token, Pls provide a valid token' });
     }
   }

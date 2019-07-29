@@ -3,10 +3,10 @@ class Validations {
     const regexEmail = /S+@S+.S+/;
     const { firstname, lastname, email, password } = req.body;
     if (!firstname || !firstname.trim()) {
-      return res.status(400).json({ message: 'Firstname is required' });
+      return res.status(400).json({ message: 'firstname is required' });
     }
     if (!lastname || !lastname.trim()) {
-      return res.status(400).json({ message: 'Lastname is required' });
+      return res.status(400).json({ message: 'lastname is required' });
     }
     if (!email || !email.trim() || regexEmail.test(email.trim())) {
       return res.status(400).json({ message: 'Enter a valid email address' });
@@ -14,7 +14,7 @@ class Validations {
     if (!password || password.length < 7) {
       return res
         .status(400)
-        .json({ message: 'Password length should be greater than 6' });
+        .json({ message: 'password length should be greater than 6' });
     }
     req.body.firstname = firstname.trim();
     req.body.lastname = lastname.trim();

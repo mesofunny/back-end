@@ -15,7 +15,7 @@ class Users {
       const token = await createToken(user);
       return res.status(201).json({ ...user, token });
     } catch (error) {
-      return res.json({ error });
+      return res.status(500).json({ error });
     }
   }
 
@@ -34,7 +34,7 @@ class Users {
       }
       return res.status(400).json({ message: 'Incorrect password or email' });
     } catch (error) {
-      return res.json({ error });
+      return res.status(500).json({ error });
     }
   }
 }
