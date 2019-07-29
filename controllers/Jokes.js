@@ -83,6 +83,34 @@ class Jokes {
       return res.status(500).json({ error });
     }
   }
+
+  static async updateUserJoke(req, res) {
+    const user_id = req.id;
+    const id = Number(req.params.id);
+    const { title, joke, status } = req.body;
+
+    try {
+      const jokes = await Models.update(user_id, id, {
+        title,
+        joke,
+        private: status,
+        user_id,
+      });
+      if (jokes === 'unable to update') {
+        return res
+          .status(403)
+          .json({ message: 'User can only update jokes they created' });
+      }
+      if (!jokes) {
+        return res
+          .status(400)
+          .json({ message: 'No joke associated with this ID' });
+      }
+      return res.status(200).json({ jokes });
+    } catch (error) {
+      return res.status(500).json({ error });
+    }
+  }
 }
 
 module.exports = Jokes;

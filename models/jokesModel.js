@@ -42,7 +42,7 @@ class JokesModel {
   static async getUserJoke(id) {
     try {
       const jokes = await db('jokes')
-        .select('id', 'title', 'joke')
+        .select('id', 'title', 'joke', 'private')
         .where({ user_id: id });
       return jokes;
     } catch (error) {
@@ -74,6 +74,26 @@ class JokesModel {
         return result;
       }
       return 'unable to delete';
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async update(user_id, id, changes) {
+    try {
+      const joke = await this.findById(id);
+      if (!joke) {
+        return null;
+      }
+      if (joke.user_id === user_id) {
+        const result = await db('jokes')
+          .where({ id })
+          .update(changes)
+          .returning('*');
+        delete result[0].user_id;
+        return result[0];
+      }
+      return 'unable to update';
     } catch (error) {
       return error;
     }

@@ -20,7 +20,7 @@ router.get('/jokes', JokeControllers.getAllJokes);
 router.get('/jokesOfTheDay', JokeControllers.jokeOfTheDay);
 router.get('/search', JokeControllers.searchJoke);
 router.post(
-  '/jokes',
+  '/users/jokes',
   Auth.verifyToken,
   Validations.addJokeValidation,
   JokeControllers.addJoke
@@ -30,6 +30,12 @@ router.delete(
   '/users/jokes/:id',
   Auth.verifyToken,
   JokeControllers.deleteUserJoke
+);
+router.put(
+  '/users/jokes/:id',
+  Auth.verifyToken,
+  Validations.addJokeValidation,
+  JokeControllers.updateUserJoke
 );
 
 module.exports = router;
