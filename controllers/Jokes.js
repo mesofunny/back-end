@@ -9,7 +9,16 @@ class Jokes {
       }
       return res.status(200).json({ jokes });
     } catch (error) {
-      console.log(error);
+      return res.status(500).json({ error });
+    }
+  }
+
+  static async jokeOfTheDay(req, res) {
+    try {
+      const jokes = await Models.findAll();
+      const joke = jokes[Math.floor(Math.random() * jokes.length)];
+      return res.status(200).json({ joke });
+    } catch (error) {
       return res.status(500).json({ error });
     }
   }

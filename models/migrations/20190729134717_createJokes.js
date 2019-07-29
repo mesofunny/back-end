@@ -1,6 +1,6 @@
 /* eslint-disable func-names */
-exports.up = function(knex) {
-  return knex.schema.createTable('jokes', jokes => {
+exports.up = function (knex) {
+  return knex.schema.createTable('jokes', (jokes) => {
     jokes.increments();
     jokes.string('title', 255).notNullable();
     jokes.text('joke').notNullable();
@@ -15,6 +15,6 @@ exports.up = function(knex) {
   });
 };
 
-exports.down = function(knex) {
+exports.down = function (knex) {
   return knex.schema.dropTableIfExists('jokes');
 };

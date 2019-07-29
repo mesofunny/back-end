@@ -8,13 +8,14 @@ const router = express.Router();
 router.post(
   '/users/register',
   Validations.registerValidation,
-  UserControllers.registerUser,
+  UserControllers.registerUser
 );
 router.post(
   '/users/login',
   Validations.loginValidation,
-  UserControllers.loginuser,
+  UserControllers.loginuser
 );
 router.get('/jokes', JokeControllers.getAllJokes);
+router.get('/jokesOfTheDay', JokeControllers.jokeOfTheDay);
 
 module.exports = router;
