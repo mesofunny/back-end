@@ -7,11 +7,6 @@ module.exports = {
     client: 'pg',
     connection: process.env.DATABASE_URL,
     useNullAsDefault: true,
-    pool: {
-      afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done);
-      }
-    },
     migrations: {
       directory: './models/migrations',
       tableName: 'dbmigrations'
