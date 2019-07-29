@@ -1,5 +1,6 @@
 const express = require('express');
 const UserControllers = require('../controllers/Users');
+const JokeControllers = require('../controllers/Jokes');
 const Validations = require('../middlewares/Validations');
 
 const router = express.Router();
@@ -14,5 +15,6 @@ router.post(
   Validations.loginValidation,
   UserControllers.loginuser,
 );
+router.get('/jokes', JokeControllers.getAllJokes);
 
 module.exports = router;
