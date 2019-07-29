@@ -146,3 +146,23 @@ status: 200
 ```
 404 - No jokes
 ```
+
+#### Request
+
+**GET** request to **/api/v1/jokesOfTheDay**
+
+#### Response
+
+```
+status: 200
+```
+
+```
+{
+    "joke": {
+        "id": 14,
+        "title": "Elevator",
+        "joke": "My first time using an elevator was an uplifting experience. The second time let me down."
+    }
+}
+```
