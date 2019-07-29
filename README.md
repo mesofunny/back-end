@@ -166,3 +166,63 @@ status: 200
     }
 }
 ```
+
+#### Request
+
+**POST** request to **/api/v1/jokes**
+A valid jwt token must be passed in the **Authorization** header
+
+```
+{
+	"title": "Sleep",
+	"joke": "Slept like a log last night … woke up in the fireplace.",
+	"status": "no"
+}
+```
+
+Note:
+
+- It is a protected route, so you're to provide a valid token
+- Status only receive `yes` or `no`. It determines if the joke is to be made private or public. `yes` === `private` and `no` === `public`
+
+#### Response
+
+```
+status: 201
+```
+
+```
+Returns all jokes that have been created by a user
+{
+    "jokes": [
+        {
+            "id": 17,
+            "title": "Laughing",
+            "joke": "I am a laughter that laugh all the time"
+        },
+        {
+            "id": 18,
+            "title": "Laughing",
+            "joke": "I am a laughter that laugh all the time"
+        },
+        {
+            "id": 19,
+            "title": "Sleep",
+            "joke": "Slept like a log last night … woke up in the fireplace."
+        },
+        {
+            "id": 20,
+            "title": "Sleep",
+            "joke": "Slept like a log last night … woke up in the fireplace."
+        }
+    ]
+}
+```
+
+#### Error
+
+```
+400 - Invalid inputs (title, joke, status)
+401 - Invalid token
+401 - No token provided
+```
