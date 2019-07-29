@@ -36,6 +36,7 @@
     "eslint-plugin-import": "^2.18.2"
   },
   "engines": {
-    "node": "12.4.0"
+    "node": "12.4.0",
+    "npm": "6.9.0"
   }
 }
