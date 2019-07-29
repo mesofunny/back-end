@@ -31,6 +31,17 @@ class UsersModel {
       return error;
     }
   }
+
+  static async findByEmail(email) {
+    try {
+      const response = await db('users')
+        .where({ email })
+        .first();
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 module.exports = UsersModel;
