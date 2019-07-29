@@ -49,6 +49,35 @@ class JokesModel {
       return error;
     }
   }
+
+  static async findById(id) {
+    try {
+      const jokes = await db('jokes')
+        .where({ id })
+        .first();
+      return jokes;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async remove(user_id, id) {
+    try {
+      const joke = await this.findById(id);
+      if (!joke) {
+        return null;
+      }
+      if (joke.user_id === user_id) {
+        const result = await db('jokes')
+          .del()
+          .where({ id });
+        return result;
+      }
+      return 'unable to delete';
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 module.exports = JokesModel;
