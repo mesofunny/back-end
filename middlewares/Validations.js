@@ -50,9 +50,16 @@ class Validations {
     if (!status || !status.trim()) {
       return res.status(400).json({ message: 'status is required' });
     }
+    if (
+      status.toLowerCase().trim() !== 'yes' &&
+      status.toLowerCase().trim() !== 'no'
+    ) {
+      console.log(status);
+      return res.status(400).json({ message: 'status can only be yes or no' });
+    }
     req.body.title = title.trim();
     req.body.joke = joke.trim();
-    req.body.status = status.trim();
+    req.body.status = status.trim().toLowerCase();
     return next();
   }
 }

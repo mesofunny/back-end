@@ -44,7 +44,7 @@ class Jokes {
         private: status,
         user_id
       });
-      return res.status(201).json({ joke: result });
+      return res.status(201).json({ jokes: result });
     } catch (error) {
       console.log(error);
       return res.status(500).json({ error });
