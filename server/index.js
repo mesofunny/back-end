@@ -13,5 +13,8 @@ server.get('/', (req, res) => {
 });
 
 server.use('/api/v1', routes);
+server.use('*', (req, res) => {
+  res.status(404).json('Invalid route');
+});
 
 module.exports = server;

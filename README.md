@@ -154,7 +154,7 @@ status: 200
 
 #### Request
 
-**POST** request to **/api/v1/jokes**
+**POST** request to **/api/v1/users/jokes**
 
 A valid jwt token must be passed in the **Authorization** header
 
@@ -271,3 +271,49 @@ status: 204
 401 - No token provided
 404 - No jokes is associated with this user
 ```
+
+#### Request
+
+**PUT** request to **/api/v1/users/jokes/:id**
+
+A valid jwt token must be passed in the **Authorization** header
+
+```
+{
+	"title": "Sleep",
+	"joke": "Slept like a log last night … woke up in the fireplace.",
+	"status": "no"
+}
+```
+
+Note:
+
+- It is a protected route, so you're to provide a valid token
+- Status only receive `yes` or `no`. It determines if the joke is to be made private or public. `yes` === `private` and `no` === `public`
+
+#### Response
+
+```
+status: 200
+```
+
+```
+Returns the updated joke only
+{
+    "jokes": {
+	"title": "Sleep",
+	"joke": "Slept like a log last night … woke up in the fireplace.",
+	"status": "no"
+   }
+}
+```
+
+#### Error
+
+```
+400 - Invalid inputs (title, joke, status)
+401 - Invalid token
+401 - No token provided
+404 - No jokes is associated with this user
+```
+
