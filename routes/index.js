@@ -1,6 +1,7 @@
 const express = require('express');
 const UserControllers = require('../controllers/Users');
 const JokeControllers = require('../controllers/Jokes');
+const MessageControllers = require('../controllers/Messages');
 const Validations = require('../middlewares/Validations');
 const Auth = require('../middlewares/Auth');
 
@@ -42,6 +43,12 @@ router.post(
   '/users/create',
   Validations.registerValidation,
   UserControllers.createUser
+);
+
+router.get(
+  '/users/messages/all',
+  Auth.verifyToken,
+  MessageControllers.getAllMessages
 );
 
 module.exports = router;
