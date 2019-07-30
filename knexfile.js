@@ -33,7 +33,7 @@ module.exports = {
     connection: {
       host: 'localhost',
       port: 5432,
-      database: 'jokesdb',
+      database: 'jokedb_test',
       user: 'benjaminajewole',
     },
     useNullAsDefault: true,

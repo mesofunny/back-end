@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 const Models = require('../models/jokesModel');
+const { errorResponse } = require('../helpers');
 
 class Jokes {
   static async getAllJokes(req, res) {
@@ -10,7 +11,7 @@ class Jokes {
       }
       return res.status(200).json({ jokes });
     } catch (error) {
-      return res.status(500).json({ error });
+      return errorResponse(res, error);
     }
   }
 
@@ -20,7 +21,7 @@ class Jokes {
       const joke = jokes[Math.floor(Math.random() * jokes.length)];
       return res.status(200).json({ joke });
     } catch (error) {
-      return res.status(500).json({ error });
+      return errorResponse(res, error);
     }
   }
 
@@ -30,7 +31,7 @@ class Jokes {
       const jokes = await Models.search(text);
       return res.status(200).json({ jokes });
     } catch (error) {
-      return res.status(500).json({ error });
+      return errorResponse(res, error);
     }
   }
 
@@ -46,7 +47,7 @@ class Jokes {
       });
       return res.status(201).json({ jokes: result });
     } catch (error) {
-      return res.status(500).json({ error });
+      return errorResponse(res, error);
     }
   }
 
@@ -59,7 +60,7 @@ class Jokes {
       }
       return res.status(200).json({ jokes });
     } catch (error) {
-      return res.status(500).json({ error });
+      return errorResponse(res, error);
     }
   }
 
@@ -80,7 +81,7 @@ class Jokes {
       }
       return res.status(204).json({ message: 'Deleted successfully' });
     } catch (error) {
-      return res.status(500).json({ error });
+      return errorResponse(res, error);
     }
   }
 
@@ -94,7 +95,7 @@ class Jokes {
         title,
         joke,
         private: status,
-        user_id,
+        user_id
       });
       if (jokes === 'unable to update') {
         return res
@@ -108,7 +109,7 @@ class Jokes {
       }
       return res.status(200).json({ jokes });
     } catch (error) {
-      return res.status(500).json({ error });
+      return errorResponse(res, error);
     }
   }
 }
