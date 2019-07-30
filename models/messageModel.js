@@ -3,11 +3,13 @@ const db = require('./dbConfig');
 class MessageModel {
   static async post(data) {
     try {
-      const message = await db('messagea')
+      const message = await db('messages')
         .insert(data)
         .returning('*');
       return message;
     } catch (error) {
+      console.log(error);
+
       return error;
     }
   }
@@ -21,9 +23,18 @@ class MessageModel {
     }
   }
 
-  static async find(id) {
+  static async findSent(sender) {
     try {
-      const messages = await db('messages').where({ id });
+      const messages = await db('messages').where({ sender });
+      return messages;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async findReceived(receiver) {
+    try {
+      const messages = await db('messages').where({ receiver });
       return messages;
     } catch (error) {
       return error;

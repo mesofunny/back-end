@@ -45,10 +45,28 @@ router.post(
   UserControllers.createUser
 );
 
+router.post(
+  '/users/messages',
+  Auth.verifyToken,
+  MessageControllers.postMessage
+);
+
 router.get(
   '/users/messages/all',
   Auth.verifyToken,
   MessageControllers.getAllMessages
+);
+
+router.get(
+  '/users/messages/received',
+  Auth.verifyToken,
+  MessageControllers.getReceivedMessages
+);
+
+router.get(
+  '/users/messages/sent',
+  Auth.verifyToken,
+  MessageControllers.getSentMessages
 );
 
 module.exports = router;
