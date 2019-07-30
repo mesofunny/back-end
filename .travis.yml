@@ -5,7 +5,7 @@ node_js:
 
 env:
   global:
-    - CC_TEST_REPORTER_ID=ba5cbb3545afb698e99b0f96b2a806c5c05b8a3a5cac487a29d3a6a1886e87ad
+    - CC_TEST_REPORTER_ID=da1fee3ce1508e9ff73dc6a7481d5ec48a797448627e1bb05eb4ee46d35af857
   
 services:
   - postgresql
