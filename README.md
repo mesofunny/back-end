@@ -284,3 +284,50 @@ Returns the updated joke only
 401 - No token provided
 404 - No jokes is associated with this user
 ```
+
+
+## Stretch
+
+**Uploading image when signing up**
+#### Request
+**POST** request to **/api/v1/users/create**
+```
+{
+	"firstname": "Thompson",
+	"lastname": "Janet",
+	"email": "janet@gmail.com",
+	"password": "janet1234567",
+	"photo": "pick file from local machine"
+}
+```
+Note:
+- All component of the request are strings, passwords must be at least 7 characters
+- Use formData instead and append the data to it
+- Add this to your headers 
+```
+Accept: "application/json", "Content-Type": "multipart/form-data" 
+```
+
+#### Response 
+```
+status: 201
+```
+```
+{
+    "firstname": "Thompson",
+    "lastname": "Janet",
+    "email": "janet@gmail.com",
+    "photo": "http://res.cloudinary.com/rexben/image/upload/v1564481480/qv6jzjiy219y1fxisgot.jpg"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NjQ0MDE1MDksImV4cCI6MTU2NDQ4NzkwOX0.hJeAXAu83L5RP2oZ5COSlrTWHoppDim3GnQ48KReey8",
+}
+```
+Notes: 
+- Store the token to the localstorage to  be able to visit protected routes
+- Email address is unique
+- Uploading image is optional
+
+#### Error
+```
+400 - Invalid inputs (firstname, lastname, email, password)
+409 - Email address exists already
+```
