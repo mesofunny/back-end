@@ -59,6 +59,7 @@ describe('Stretch', () => {
       .field('password', '1234567')
       .attach('photo', __dirname + '/fb.jpg')
       .end((err, res) => {
+        console.log(res.body);
         done(err);
       });
   });
