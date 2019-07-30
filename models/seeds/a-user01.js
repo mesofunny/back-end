@@ -2,7 +2,7 @@
 /* eslint-disable func-names */
 const { hashPassword } = require('../../helpers');
 
-exports.seed = function(knex) {
+exports.seed = function (knex) {
   // Deletes ALL existing entries
   return knex('users')
     .del()
@@ -14,7 +14,7 @@ exports.seed = function(knex) {
           email: 'benny@gmail.com',
           password: hashPassword('12345678'),
           photo:
-            'https://res.cloudinary.com/rexben/image/upload/v1552392878/d2zklubixzzl18dfdfjy.png'
+            'https://res.cloudinary.com/rexben/image/upload/v1552392878/d2zklubixzzl18dfdfjy.png',
         },
         {
           firstname: 'Shelby',
@@ -22,7 +22,7 @@ exports.seed = function(knex) {
           email: 'gloria@gmail.com1',
           password: hashPassword('12345678'),
           photo:
-            'https://res.cloudinary.com/rexben/image/upload/v1564475993/sample.jpg'
+            'https://res.cloudinary.com/rexben/image/upload/v1564475993/sample.jpg',
         },
         {
           firstname: 'Love',
@@ -30,8 +30,7 @@ exports.seed = function(knex) {
           email: 'paul@gmail.com',
           password: hashPassword('12345678'),
           photo:
-            'https://res.cloudinary.com/rexben/image/upload/v1552391019/fk4qlr9gtf6qs73do5hw.jpg'
-        }
-      ])
-    );
+            'https://res.cloudinary.com/rexben/image/upload/v1552391019/fk4qlr9gtf6qs73do5hw.jpg',
+        },
+      ]),);
 };

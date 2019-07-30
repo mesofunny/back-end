@@ -1,5 +1,5 @@
+/* eslint-disable no-undef */
 const chai = require('chai');
-const db = require('../models/dbConfig');
 const Models = require('../models/usersModel');
 
 chai.should();
@@ -15,7 +15,7 @@ beforeEach(async () => {
   await Models.post(user);
 });
 
-describe('Get all users', () => {
+describe('Users model', () => {
   it('returns all users', async () => {
     const users = await Models.findAll();
     users.should.be.a('array');
@@ -31,6 +31,10 @@ describe('Get all users', () => {
     userDetail.firstname.should.equal('Rexy');
   });
   it('find by id', async () => {
+    const userId = await Models.findById(1);
+    userId.firstname.should.equal('Rexben');
+  });
+  it('find by email', async () => {
     const userEmail = await Models.findByEmail('benny1@gmail.com');
     userEmail.lastname.should.equal('Benny');
   });
