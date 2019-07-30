@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/mesofunny/back-end.svg?branch=master)](https://travis-ci.org/mesofunny/back-end)
 [![Maintainability](https://api.codeclimate.com/v1/badges/954a2d66fce0b63e3be8/maintainability)](https://codeclimate.com/github/mesofunny/back-end/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/954a2d66fce0b63e3be8/test_coverage)](https://codeclimate.com/github/mesofunny/back-end/test_coverage)
+[![Coverage Status](https://coveralls.io/repos/github/mesofunny/back-end/badge.svg?branch=master)](https://coveralls.io/github/mesofunny/back-end?branch=master)
 
 Dad Jokes API is used for fetching jokes and you can add jokes too.
 
