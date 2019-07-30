@@ -38,12 +38,13 @@ class Jokes {
   static async addJoke(req, res) {
     const { title, joke, status } = req.body;
     const user_id = req.id;
+    console.log(user_id);
     try {
       const result = await Models.post({
         title,
         joke,
         private: status,
-        user_id
+        user_id,
       });
       return res.status(201).json({ jokes: result });
     } catch (error) {
