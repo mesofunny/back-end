@@ -25,7 +25,7 @@ class UsersModel {
   static async findById(id) {
     try {
       const response = await db('users')
-        .select('firstname', 'lastname', 'email')
+        .select('firstname', 'lastname', 'email', 'photo')
         .where({ id })
         .first();
       return response;

@@ -38,4 +38,10 @@ router.put(
   JokeControllers.updateUserJoke
 );
 
+router.post(
+  '/users/create',
+  Validations.registerValidation,
+  UserControllers.createUser
+);
+
 module.exports = router;
