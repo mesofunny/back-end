@@ -3,7 +3,7 @@
 exports.seed = function (knex) {
   // Deletes ALL existing entries
   return knex('jokes')
-    .truncate()
+    .del()
     .then(() =>
       knex('jokes').insert([
         {

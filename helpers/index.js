@@ -4,11 +4,11 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const createToken = async user => {
+const createToken = async (user) => {
   const { id } = user;
   try {
     const token = await jwt.sign({ id }, process.env.JWT_SECRET, {
-      expiresIn: '24h'
+      expiresIn: '24h',
     });
     return token;
   } catch (error) {
@@ -16,7 +16,7 @@ const createToken = async user => {
   }
 };
 
-const hashPassword = password => {
+const hashPassword = (password) => {
   const salt = bcrypt.genSaltSync(10);
   const hashed = bcrypt.hashSync(password, salt);
   return hashed;
@@ -27,4 +27,8 @@ const comparePassword = (password, hash) => {
   return compare;
 };
 
-module.exports = { createToken, hashPassword, comparePassword };
+const errorResponse = (res, error) => res.status(500).json({ error });
+
+module.exports = {
+  createToken, hashPassword, comparePassword, errorResponse,
+};

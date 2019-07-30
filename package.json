@@ -1,12 +1,14 @@
 {
   "name": "me_so_funny",
   "version": "1.0.0",
-  "description": "Creating API for MeSoFunny with Node, Express, Cloudinary, SQLite 3, Knex",
+  "description": "Creating API for MeSoFunny with Node, Express, Cloudinary, Postgres, Knex",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "start:dev": "cross-env DB_ENV=development nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env DB_ENV=testing nyc ./node_modules/.bin/mocha --timeout 10000 specs/*.js --exit || true",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "coverage": "DB_ENV=testing nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov"
   },
   "repository": {
     "type": "git",
@@ -20,13 +22,18 @@
   "homepage": "https://github.com/mesofunny/back-end#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "cors": "^2.8.5",
+    "coveralls": "^3.0.5",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.19.1",
+    "mocha": "^6.2.0",
     "nodemon": "^1.19.1",
+    "nyc": "^14.1.1",
     "pg": "^7.12.0",
     "sqlite3": "^4.0.9"
   },
