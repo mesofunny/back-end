@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node index.js",
     "start:dev": "cross-env DB_ENV=development nodemon index.js",
-    "test": "cross-env DB_ENV=testing nyc ./node_modules/.bin/mocha --timeout 10000 specs/*.js --exit || true",
+    "seeds": "knex seed:run --env=testing",
+    "migrate": "knex migrate:rollback --env=testing && knex migrate:latest --env=testing",
+    "test": "npm run migrate && npm run seeds && cross-env DB_ENV=testing nyc ./node_modules/.bin/mocha --timeout 10000 specs/*.js --exit || true",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "coverage": "DB_ENV=testing nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov"
   },

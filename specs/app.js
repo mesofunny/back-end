@@ -7,10 +7,8 @@ chai.should();
 
 chai.use(chaiHttp);
 
-
-
 describe('GET /', () => {
-  it('it should get homepage', done => {
+  it('it should get homepage', (done) => {
     chai
       .request(server)
       .get('/')
@@ -21,33 +19,13 @@ describe('GET /', () => {
   });
 });
 
-describe('GET /api/v1/jokes', () => {
-  it('it should return an array of jokes', done => {
+describe('Invalid route', () => {
+  it('It should return invalid route', (done) => {
     chai
       .request(server)
-      .get('/api/v1/jokes')
+      .get('/jokes')
       .end((err, res) => {
-        res.should.have.status(200);
-        res.body.jokes.should.to.be.a('array');
-        done(err);
-      });
-  });
-  it('it should return an object', done => {
-    chai
-      .request(server)
-      .get('/api/v1/jokesOfTheDay')
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.body.joke.should.to.be.a('object');
-        done(err);
-      });
-  });
-  it('it should return search results', done => {
-    chai
-      .request(server)
-      .get('/api/v1/search?text=rock')
-      .end((err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(404);
         done(err);
       });
   });

@@ -6,7 +6,7 @@ class JokesModel {
   static async findAll() {
     try {
       const response = await db('jokes')
-        .select('id', 'title', 'joke')
+        .select('id', 'title', 'joke', 'user_id')
         .where({ private: 'no' });
       return response;
     } catch (error) {

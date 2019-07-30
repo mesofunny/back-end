@@ -29,6 +29,7 @@ const comparePassword = (password, hash) => {
 
 const errorResponse = (res, error) => res.status(500).json({ error });
 
+
 module.exports = {
   createToken, hashPassword, comparePassword, errorResponse,
 };
