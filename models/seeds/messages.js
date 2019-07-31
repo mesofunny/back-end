@@ -26,7 +26,8 @@ exports.seed = function(knex) {
         },
         {
           sender: 1,
-          oke: "What did one nut say as he chased another nut?  I'm a cashew!",
+          message:
+            "What did one nut say as he chased another nut?  I'm a cashew!",
           receiver: 3
         },
         {
@@ -49,12 +50,14 @@ exports.seed = function(knex) {
         },
         {
           sender: 1,
-          oke: 'Why was it called the dark ages? Because of all the knights. ',
+          message:
+            'Why was it called the dark ages? Because of all the knights. ',
           receiver: 2
         },
         {
           sender: 1,
-          oke: 'Why did the tomato blush? Because it saw the salad dressing. ',
+          message:
+            'Why did the tomato blush? Because it saw the salad dressing. ',
           receiver: 3
         },
         {
@@ -89,7 +92,7 @@ exports.seed = function(knex) {
         },
         {
           sender: 1,
-          oke: "To be Frank, I'd have to change my name.",
+          message: "To be Frank, I'd have to change my name.",
           receiver: 2
         },
         {

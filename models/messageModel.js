@@ -14,16 +14,34 @@ class MessageModel {
 
   static async findAll() {
     try {
-      const messages = await db('messages');
+      const messages = await db('messages as m')
+        .select(
+          'm.id',
+          'm.message',
+          'u1.email as sender',
+          'u2.email as receiver'
+        )
+        .join('users as u1', 'm.sender', 'u1.id')
+        .join('users as u2', 'm.receiver', 'u2.id');
       return messages;
     } catch (error) {
+      console.log(error);
       return error;
     }
   }
 
   static async findSent(sender) {
     try {
-      const messages = await db('messages').where({ sender });
+      const messages = await db('messages as m')
+        .select(
+          'm.id',
+          'm.message',
+          'u1.email as sender',
+          'u2.email as receiver'
+        )
+        .join('users as u1', 'm.sender', 'u1.id')
+        .join('users as u2', 'm.receiver', 'u2.id')
+        .where({ sender });
       return messages;
     } catch (error) {
       return error;
@@ -32,7 +50,16 @@ class MessageModel {
 
   static async findReceived(receiver) {
     try {
-      const messages = await db('messages').where({ receiver });
+      const messages = await db('messages as m')
+        .select(
+          'm.id',
+          'm.message',
+          'u1.email as sender',
+          'u2.email as receiver'
+        )
+        .join('users as u1', 'm.sender', 'u1.id')
+        .join('users as u2', 'm.receiver', 'u2.id')
+        .where({ receiver });
       return messages;
     } catch (error) {
       return error;
