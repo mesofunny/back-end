@@ -235,11 +235,19 @@ A valid jwt token must be passed in the **Authorization** header
 
 #### Response
 ```
-status: 204
+status: 200
 ```
 ```
 {
-    "message": "Deleted successfully"
+    "message": "Deleted successfully",
+    "joke": [
+        {
+            "id": 22,
+            "title": "Adeoye",
+            "joke": "Ade is a hell of a funny guy.",
+            "private": "yes"
+        }
+    ]
 }
 ```
 
@@ -369,6 +377,7 @@ status: 201
 400 - Invalid inputs (receiver, message)
 401 - Invalid token
 401 - No token provided
+404 - Receiver does not exist
 ```
 
 #### Request

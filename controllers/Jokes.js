@@ -44,7 +44,7 @@ class Jokes {
         title,
         joke,
         private: status,
-        user_id,
+        user_id
       });
       return res.status(201).json({ jokes: result });
     } catch (error) {
@@ -80,7 +80,7 @@ class Jokes {
           .status(400)
           .json({ message: 'No joke associated with this ID' });
       }
-      return res.status(204).json({ message: 'Deleted successfully' });
+      return res.status(200).json({ message: 'Deleted successfully', joke });
     } catch (error) {
       return errorResponse(res, error);
     }

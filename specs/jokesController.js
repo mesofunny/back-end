@@ -123,7 +123,7 @@ describe('Jokes Endpoints', () => {
       .delete('/api/v1/users/jokes/21')
       .set('authorization', token)
       .end((err, res) => {
-        res.should.have.status(204);
+        res.should.have.status(200);
         done(err);
       });
   });
