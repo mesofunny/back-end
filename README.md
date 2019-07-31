@@ -14,6 +14,7 @@ Link to the API https://mesofunny.herokuapp.com/
 | :---        |    :----:   |         :---: |
 | GET      | /       | Index route  |
 | POST   | /api/v1/users/register        | Register user      |
+| GET | /api/v1/users| Get all users
 | POST | /api/v1/users/login | Login user |
 | GET | /api/v1/jokes| Get all public jokes |
 | GET | /api/v1/jokesOfTheDay | Get the joke of the day |
@@ -298,7 +299,62 @@ Returns the updated joke only
 401 - No token provided
 404 - No jokes is associated with this user
 ```
+#### Request
+**GET** request to **/api/v1/users/**
+A valid jwt token must be passed in the **Authorization** header
 
+#### Response 
+```
+status: 200
+```
+```
+Returns an array of registered users
+{
+    "users": [
+        {
+            "id": 16,
+            "firstname": "Rexben",
+            "lastname": "Benny",
+            "email": "benny@gmail.com",
+            "password": "$2a$10$Tr/oUia0GypFWBljAAXrE.MkPEoVJeRmEPOmjxJazwxB5y0OPdc6W",
+            "photo": "https://res.cloudinary.com/rexben/image/upload/v1552392878/d2zklubixzzl18dfdfjy.png"
+        },
+        {
+            "id": 17,
+            "firstname": "Shelby",
+            "lastname": "Gloria",
+            "email": "gloria@gmail.com1",
+            "password": "$2a$10$BQUHnqvPIVnRKLuA.Hwy2ef0tHQKl20RUt/7yH1dmE66vuhoUrb.m",
+            "photo": "https://res.cloudinary.com/rexben/image/upload/v1564475993/sample.jpg"
+        },
+        {
+            "id": 18,
+            "firstname": "Love",
+            "lastname": "Paul",
+            "email": "paul@gmail.com",
+            "password": "$2a$10$BeohIMSsNFex/S6xZW3QFOFQWp1TZObwKKNtdZuoVySf1usalA7gm",
+            "photo": "https://res.cloudinary.com/rexben/image/upload/v1552391019/fk4qlr9gtf6qs73do5hw.jpg"
+        },
+        {
+            "id": 19,
+            "firstname": "Rex",
+            "lastname": "Ben",
+            "email": "rexben01@gmail.com",
+            "password": "$2a$10$vjOzing6.o5q2DPfOrFMDe.tsBZNURTP2GZBgUIbl62GN514eTmzK",
+            "photo": null
+        }
+    ]
+}
+```
+Note: 
+ - It is a protected route, so you're to provide a valid token
+ 
+#### Error
+```
+401 - Invalid token
+401 - No token provided
+404 - No registered users
+```
 
 ## Stretch
 

@@ -33,7 +33,7 @@ describe('Joke models', () => {
   });
   it('remove joke by id', async () => {
     const remove = await Models.remove(1, 17);
-    remove.should.equal(1);
+    remove.should.be.a('array');
     const remove2 = await Models.remove(1, 16);
     remove2.should.equal('unable to delete');
   });

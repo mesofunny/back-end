@@ -33,7 +33,6 @@ class Messages {
         </div>`,
       };
       const result = await transporter.sendMail(mailOptions);
-      console.log(result);
       return res.status(201).json({ newMessage });
     } catch (error) {
       return errorResponse(res, error);
