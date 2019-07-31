@@ -7,7 +7,7 @@ class Jokes {
     try {
       const jokes = await Models.findAll();
       if (!jokes.length) {
-        return res.statut(404).json({ message: 'No jokes' });
+        return res.status(404).json({ message: 'No jokes' });
       }
       return res.status(200).json({ jokes });
     } catch (error) {
@@ -43,7 +43,7 @@ class Jokes {
         title,
         joke,
         private: status,
-        user_id,
+        user_id
       });
       return res.status(201).json({ jokes: result });
     } catch (error) {
@@ -95,7 +95,7 @@ class Jokes {
         title,
         joke,
         private: status,
-        user_id,
+        user_id
       });
       if (jokes === 'unable to update') {
         return res
