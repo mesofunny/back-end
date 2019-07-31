@@ -68,6 +68,18 @@ class Users {
       return res.status(500).json({ error });
     }
   }
+
+  static async getAllUser(req, res) {
+    try {
+      const users = await Models.findAll();
+      if (!users.length) {
+        return res.status(404).json({ message: 'No users' });
+      }
+      return res.status(200).json({ users });
+    } catch (error) {
+      return res.status(500).json({ error });
+    }
+  }
 }
 
 module.exports = Users;
