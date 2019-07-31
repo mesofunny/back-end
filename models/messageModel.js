@@ -8,7 +8,8 @@ class MessageModel {
         .returning('id');
       const message = await this.findById(id);
       return message;
-    } catch (error) {
+    } catch (error)
+    {
       return error;
     }
   }

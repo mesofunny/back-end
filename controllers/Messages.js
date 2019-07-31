@@ -7,8 +7,6 @@ const { errorResponse } = require('../helpers');
 dotenv.config();
 class Messages {
   static async postMessage(req, res) {
-    console.log(process.env.USER_MAIL);
-    console.log(process.env.PASS_MAIL);
     try {
       const transporter = nodeMailer.createTransport({
         host: 'smtp.googlemail.com',
@@ -16,11 +14,14 @@ class Messages {
         secure: true,
         auth: {
           user: process.env.USER_MAIL,
-          pass: process.env.PASS_MAIL
-        }
+          pass: process.env.PASS_MAIL,
+        },
       });
       req.body.sender = req.id;
       const newMessage = await Models.post(req.body);
+      if (newMessage && newMessage.constraint === 'messages_receiver_foreign') {
+        return res.status(404).json({ message: 'Receiver does not exist' });
+      }
       const mailOptions = {
         from: process.env.USER_MAIL,
         to: newMessage.receiver,
@@ -29,7 +30,7 @@ class Messages {
         <p>Hi, you just got a new message on MesoFunny App</p>
         <p><strong>FROM:<strong> ${newMessage.sender}</p>
         <p style="background-color:white"><i>${newMessage.message}</i></p>
-        </div>`
+        </div>`,
       };
       const result = await transporter.sendMail(mailOptions);
       console.log(result);
