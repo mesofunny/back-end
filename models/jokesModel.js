@@ -68,9 +68,10 @@ class JokesModel {
         return null;
       }
       if (joke.user_id === user_id) {
-        const result = await db('jokes')
+        await db('jokes')
           .del()
           .where({ id });
+        const result = this.getUserJoke(user_id);
         return result;
       }
       return 'unable to delete';
