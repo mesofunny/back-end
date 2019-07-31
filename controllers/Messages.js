@@ -9,7 +9,6 @@ class Messages {
       const newMessage = await Models.post(req.body);
       return res.status(201).json({ newMessage });
     } catch (error) {
-      console.log(error);
       return errorResponse(res, error);
     }
   }
@@ -27,8 +26,7 @@ class Messages {
   }
 
   static async getReceivedMessages(req, res) {
-      const receiver = req.id;
-      console.log(receiver)
+    const receiver = req.id;
     try {
       const messages = await Models.findReceived(receiver);
       if (!messages.length) {

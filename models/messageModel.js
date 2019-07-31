@@ -6,10 +6,8 @@ class MessageModel {
       const message = await db('messages')
         .insert(data)
         .returning('*');
-      return message;
+      return message[0];
     } catch (error) {
-      console.log(error);
-
       return error;
     }
   }

@@ -63,6 +63,19 @@ class Validations {
     req.body.status = status.trim().toLowerCase();
     return next();
   }
+
+  static addMessageValidation(req, res, next) {
+    const { message, receiver } = req.body;
+    if (!message || !message.trim()) {
+      return res.status(400).json({ message: 'message is required' });
+    }
+    if (!receiver || !Number(receiver)) {
+      return res.status(400).json({ message: 'receiver is required and it should be a number' });
+    }
+    req.body.message = message.trim();
+    req.body.receiver = receiver;
+    return next();
+  }
 }
 
 module.exports = Validations;
