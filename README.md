@@ -5,40 +5,39 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/954a2d66fce0b63e3be8/test_coverage)](https://codeclimate.com/github/mesofunny/back-end/test_coverage)
 [![Coverage Status](https://coveralls.io/repos/github/mesofunny/back-end/badge.svg?branch=master)](https://coveralls.io/github/mesofunny/back-end?branch=master)
 
+
 Dad Jokes API is used for fetching jokes and you can add jokes too.
 
 Link to the API https://mesofunny.herokuapp.com/
 
-| VERB   |          ROUTE          |          FUNCTIONALITY          |
-| :----- | :---------------------: | :-----------------------------: |
-| GET    |            /            |           Index route           |
-| POST   | /api/v1/users/register  |          Register user          |
-| POST   |   /api/v1/users/login   |           Login user            |
-| GET    |      /api/v1/jokes      |      Get all public jokes       |
-| GET    |  /api/v1/jokesOfTheDay  |     Get the joke of the day     |
-| POST   |   /api/v1/users/jokes   |          Add new joke           |
-| GET    |   /api/v1/users/jokes   | Get the jokes created by a user |
-| DELETE | /api/v1/users/jokes/:id |    Delete a particular joke     |
-| PUT    | /api/v1/users/jokes/:id |    Update a particular joke     |
+| VERB      | ROUTE | FUNCTIONALITY    |
+| :---        |    :----:   |         :---: |
+| GET      | /       | Index route  |
+| POST   | /api/v1/users/register        | Register user      |
+| POST | /api/v1/users/login | Login user |
+| GET | /api/v1/jokes| Get all public jokes |
+| GET | /api/v1/jokesOfTheDay | Get the joke of the day |
+| POST | /api/v1/users/jokes | Add new joke |
+| GET |  /api/v1/users/jokes | Get the jokes created by a user |
+| DELETE | /api/v1/users/jokes/:id | Delete a particular joke |
+| PUT | /api/v1/users/jokes/:id | Update a particular joke |
 
-#### Request
 
+
+ #### Request
 **GET** request to **/**
 
-#### Response
-
+#### Response 
 ```
 status: 200
 ```
-
 ```
  "Welcome to Jokes API",
 ```
 
+
 #### Request
-
 **POST** request to **/api/v1/users/register**
-
 ```
 {
 	"firstname": "Thompson",
@@ -47,15 +46,12 @@ status: 200
 	"password": "janet1234567"
 }
 ```
-
 Note: All component of the request are strings, passwords must be at least 7 characters
 
-#### Response
-
+#### Response 
 ```
 status: 201
 ```
-
 ```
 {
     "firstname": "Thompson",
@@ -64,23 +60,18 @@ status: 201
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NjQ0MDE1MDksImV4cCI6MTU2NDQ4NzkwOX0.hJeAXAu83L5RP2oZ5COSlrTWHoppDim3GnQ48KReey8"
 }
 ```
-
-Notes:
-
-- Store the token to the localstorage to be able to visit protected routes
+Notes: 
+- Store the token to the localstorage to  be able to visit protected routes
 - Email address is unique
 
 #### Error
-
 ```
 400 - Invalid inputs (firstname, lastname, email, password)
 409 - Email address exists already
 ```
 
 #### Request
-
 **POST** request to **/api/v1/users/login**
-
 ```
 {
 	"email": "janet@gmail.com",
@@ -88,12 +79,10 @@ Notes:
 }
 ```
 
-#### Response
-
+#### Response 
 ```
 status: 200
 ```
-
 ```
 {
     "id": 1,
@@ -103,24 +92,19 @@ status: 200
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTY0NDAyOTMyLCJleHAiOjE1NjQ0ODkzMzJ9.Tyta2pOdh3_2Y2_A6Dh9934_XHS-QFc58tWoNbDS86s"
 }
 ```
-
 #### Error
-
 ```
 400 - Invalid inputs (email, password)
 401 - Incorrect email or password
 ```
 
 #### Request
-
 **GET** request to **/api/v1/jokes**
 
-#### Response
-
+#### Response 
 ```
 status: 200
 ```
-
 ```
 {
     "jokes": [
@@ -142,23 +126,18 @@ status: 200
     ]
 }
 ```
-
 #### Error
-
 ```
 404 - No jokes
 ```
 
 #### Request
-
 **GET** request to **/api/v1/jokesOfTheDay**
 
-#### Response
-
+#### Response 
 ```
 status: 200
 ```
-
 ```
 {
     "joke": {
@@ -170,11 +149,9 @@ status: 200
 ```
 
 #### Request
-
 **POST** request to **/api/v1/users/jokes**
 
 A valid jwt token must be passed in the **Authorization** header
-
 ```
 {
 	"title": "Sleep",
@@ -183,17 +160,14 @@ A valid jwt token must be passed in the **Authorization** header
 }
 ```
 
-Note:
+Note: 
+ - It is a protected route, so you're to provide a valid token
+- Status only receive `yes` or `no`. It determines if the joke is to be made private or public. `yes` === `private` and `no` === `public` 
 
-- It is a protected route, so you're to provide a valid token
-- Status only receive `yes` or `no`. It determines if the joke is to be made private or public. `yes` === `private` and `no` === `public`
-
-#### Response
-
+#### Response 
 ```
 status: 201
 ```
-
 ```
 Returns all jokes that have been created by a user
 {
@@ -213,7 +187,6 @@ Returns all jokes that have been created by a user
 ```
 
 #### Error
-
 ```
 400 - Invalid inputs (title, joke, status)
 401 - Invalid token
@@ -221,17 +194,14 @@ Returns all jokes that have been created by a user
 ```
 
 #### Request
-
 **GET** request to **/api/v1/users/jokes**
 
 A valid jwt token must be passed in the **Authorization** header
 
-#### Response
-
+#### Response 
 ```
 status: 200
 ```
-
 ```
 Returns an array of jokes created by the user
 {
@@ -249,30 +219,24 @@ Returns an array of jokes created by the user
     ]
 }
 ```
-
-Note:
-
-- It is a protected route, so you're to provide a valid token
+Note: 
+ - It is a protected route, so you're to provide a valid token
 
 #### Error
-
 ```
 401 - Invalid token
 401 - No token provided
 404 - No jokes is associated with this user
 ```
 
-#### Request
-
+#### Request 
 **DELETE** request to **/api/v1/users/jokes/:id**
 A valid jwt token must be passed in the **Authorization** header
 
 #### Response
-
 ```
 status: 204
 ```
-
 ```
 {
     "message": "Deleted successfully"
@@ -280,7 +244,6 @@ status: 204
 ```
 
 #### Error
-
 ```
 400 - User can only delete jokes they created
 400 - No joke associated with this ID
@@ -290,11 +253,9 @@ status: 204
 ```
 
 #### Request
-
 **PUT** request to **/api/v1/users/jokes/:id**
 
 A valid jwt token must be passed in the **Authorization** header
-
 ```
 {
 	"title": "Sleep",
@@ -303,17 +264,14 @@ A valid jwt token must be passed in the **Authorization** header
 }
 ```
 
-Note:
+Note: 
+ - It is a protected route, so you're to provide a valid token
+- Status only receive `yes` or `no`. It determines if the joke is to be made private or public. `yes` === `private` and `no` === `public` 
 
-- It is a protected route, so you're to provide a valid token
-- Status only receive `yes` or `no`. It determines if the joke is to be made private or public. `yes` === `private` and `no` === `public`
-
-#### Response
-
+#### Response 
 ```
 status: 200
 ```
-
 ```
 Returns the updated joke only
 {
@@ -326,7 +284,6 @@ Returns the updated joke only
 ```
 
 #### Error
-
 ```
 400 - Invalid inputs (title, joke, status)
 401 - Invalid token
@@ -334,14 +291,12 @@ Returns the updated joke only
 404 - No jokes is associated with this user
 ```
 
+
 ## Stretch
 
 **Uploading image when signing up**
-
 #### Request
-
 **POST** request to **/api/v1/users/create**
-
 ```
 {
 	"firstname": "Thompson",
@@ -351,23 +306,18 @@ Returns the updated joke only
 	"photo": "pick file from local machine"
 }
 ```
-
 Note:
-
 - All component of the request are strings, passwords must be at least 7 characters
 - Use formData instead and append the data to it
-- Add this to your headers
-
+- Add this to your headers 
 ```
-Accept: "application/json", "Content-Type": "multipart/form-data"
+Accept: "application/json", "Content-Type": "multipart/form-data" 
 ```
 
-#### Response
-
+#### Response 
 ```
 status: 201
 ```
-
 ```
 {
     "firstname": "Thompson",
@@ -377,16 +327,113 @@ status: 201
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NjQ0MDE1MDksImV4cCI6MTU2NDQ4NzkwOX0.hJeAXAu83L5RP2oZ5COSlrTWHoppDim3GnQ48KReey8",
 }
 ```
-
-Notes:
-
-- Store the token to the localstorage to be able to visit protected routes
+Notes: 
+- Store the token to the localstorage to  be able to visit protected routes
 - Email address is unique
-- Uploading image is optional
 
 #### Error
-
 ```
 400 - Invalid inputs (firstname, lastname, email, password)
 409 - Email address exists already
 ```
+
+#### Request
+**POST** request to **/api/v1/users/messages**
+A valid jwt token must be passed in the **Authorization** header
+
+```
+{
+	"receiver": 17,
+	"message": "Laughter is free but people pay for it. Lol"
+}
+```
+Note: receiver should be a number, it is the ID of the user a joke is been sent to
+
+#### Response 
+```
+status: 201
+```
+```
+{
+    "newMessage": {
+        "id": 8,
+        "message": "Laughter is free but people pay for it. Lol",
+        "sender": 19,
+        "receiver": 17
+    }
+}
+```
+
+#### Error
+```
+400 - Invalid inputs (receiver, message)
+401 - Invalid token
+401 - No token provided
+```
+
+#### Request
+**GET** request to **/api/v1/users/messages/sent**
+
+A valid jwt token must be passed in the **Authorization** header
+
+#### Response 
+```
+status: 200
+```
+```
+Returns an array of messages sent by a user
+{
+    "messages": [
+        {
+            "id": 5,
+            "message": "Laughter is free but people pay for it. Lol",
+            "sender": 19,
+            "receiver": 17
+        }
+    ]
+}
+```
+Note: 
+ - It is a protected route, so you're to provide a valid token
+ 
+#### Error
+```
+401 - Invalid token
+401 - No token provided
+404 - No message has been sent by the user
+```
+
+#### Request
+**GET** request to **/api/v1/users/messages/received**
+
+A valid jwt token must be passed in the **Authorization** header
+
+#### Response 
+```
+status: 200
+```
+```
+Returns an array of messages received by a user
+{
+    "messages": [
+        {
+            "id": 6,
+            "message": "Laughter is all and all",
+            "sender": 17,
+            "receiver": 19
+        }
+    ]
+}
+```
+Note: 
+ - It is a protected route, so you're to provide a valid token
+ 
+#### Error
+```
+401 - Invalid token
+401 - No token provided
+404 - No message has been sent by the user
+```
+
+**Acknowledgements**
+Jokes gotten from `https://icanhazdadjoke.com/search`
