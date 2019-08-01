@@ -18,6 +18,7 @@ router.post(
   UserControllers.loginuser
 );
 router.get('/users', Auth.verifyToken, UserControllers.getAllUser);
+router.get('/user', Auth.verifyToken, UserControllers.getUser);
 router.get('/jokes', JokeControllers.getAllJokes);
 router.get('/jokesOfTheDay', JokeControllers.jokeOfTheDay);
 router.get('/search', JokeControllers.searchJoke);
